@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "expo-image";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { useTailwind } from "tailwind-rn";
 
 const logo = require("../assets/images/logo.svg") as string;
@@ -15,7 +15,16 @@ const LoginScreen = () => {
         style={tailwind("w-24 h-full  m-auto")}
         contentFit="contain"
       ></Image>
-      <Text style={tailwind("text-[#5A716A] font-semibold p-12")}>Continue</Text>
+
+      <Pressable>
+        <Text
+          style={tailwind(
+            "font-Khmer underline text-[16px] text-[#5A716A]  p-12 "
+          )}
+        >
+          Continue
+        </Text>
+      </Pressable>
     </View>
   );
 };
