@@ -4,13 +4,17 @@ import LoginScreen from "@/screens/LoginScreen";
 
 import utilities from "./tailwind.json";
 import React from "react";
-import Navbar from "@/common/components/elements/NavBar";
+import { useFonts } from 'expo-font';
+
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'Khmer': require('@/assets/fonts/Khmer MN.ttc'),
+  });
   return (
     <TailwindProvider utilities={utilities}>
       <SafeAreaView>
-        <Navbar/>
         <LoginScreen />
       </SafeAreaView>
     </TailwindProvider>

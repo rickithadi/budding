@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "expo-image";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useTailwind } from "tailwind-rn";
 
 const bud = require("../../../../public/bud.svg") as string;

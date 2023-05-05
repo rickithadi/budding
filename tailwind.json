@@ -322,6 +322,14 @@
 			"paddingLeft": 24
 		}
 	},
+	"p-14": {
+		"style": {
+			"paddingTop": 56,
+			"paddingRight": 56,
+			"paddingBottom": 56,
+			"paddingLeft": 56
+		}
+	},
 	"px-3": {
 		"style": {
 			"paddingLeft": 12,
