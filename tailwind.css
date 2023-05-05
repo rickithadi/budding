@@ -1,0 +1,125 @@
+.static {
+  position: static
+}
+
+.absolute {
+  position: absolute
+}
+
+.relative {
+  position: relative
+}
+
+.m-auto {
+  margin: auto
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.block {
+  display: block
+}
+
+.inline {
+  display: inline
+}
+
+.flex {
+  display: flex
+}
+
+.contents {
+  display: contents
+}
+
+.hidden {
+  display: none
+}
+
+.h-full {
+  height: 100%
+}
+
+.h-screen {
+  height: 100vh
+}
+
+.h-96 {
+  height: 24rem
+}
+
+.h-6 {
+  height: 1.5rem
+}
+
+.h-16 {
+  height: 4rem
+}
+
+.w-96 {
+  width: 24rem
+}
+
+.w-6 {
+  width: 1.5rem
+}
+
+.w-16 {
+  width: 4rem
+}
+
+.items-center {
+  align-items: center
+}
+
+.rounded-full {
+  border-radius: 9999px
+}
+
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity))
+}
+
+.bg-\[\#FAFAFA\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity))
+}
+
+.p-12 {
+  padding: 3rem
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
+}
+
+.pt-12 {
+  padding-top: 3rem
+}
+
+.font-semibold {
+  font-weight: 600
+}
+
+.italic {
+  font-style: italic
+}
+
+.text-blue-800 {
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity))
+}
+
+.underline {
+  text-decoration-line: underline
+}
