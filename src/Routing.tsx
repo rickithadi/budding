@@ -17,10 +17,10 @@ const Drawer = createDrawerNavigator();
 
 const AuthedRoutes = () => (
   <NavigationContainer>
-    <StatusBar style="auto" />
-    {/* <Drawer.Navigator>
-      <Navbar />
-    </Drawer.Navigator> */}
+    <Navbar />
+    <Drawer.Navigator drawerContent={(props) => <SidebarMenu {...props} />}>
+      <Drawer.Screen name="Login" component={LoginScreen} />
+    </Drawer.Navigator>
   </NavigationContainer>
 );
 export const Routing = () => {

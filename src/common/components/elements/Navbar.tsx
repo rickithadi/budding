@@ -20,7 +20,7 @@ const Navbar = ({ navigation }: any) => {
         style={tailwind("w-12 h-5")}
         contentFit="contain"
       ></Image>
-      <Pressable onPress={() => navigation.openDrawer()}>
+      <Pressable onPress={() => navigation.toggleDrawer()}>
         <Image
           source={filters}
           style={tailwind("w-12 h-5")}

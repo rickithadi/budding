@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 import { SafeAreaView } from "react-native";
 import { TailwindProvider } from "tailwind-rn";
 
@@ -7,7 +7,7 @@ import React from "react";
 import { useFonts } from "expo-font";
 import { AuthProvider } from "@/providers/AuthProvider";
 import Routing from "@/Routing";
-import LoginScreen from '@/screens/LoginScreen';
+import LoginScreen from "@/screens/LoginScreen";
 
 export default function App() {
   // const [fontsLoaded] = useFonts({
@@ -16,12 +16,11 @@ export default function App() {
   return (
     // @ts-ignore
     <TailwindProvider utilities={utilities}>
-      {/* <AuthProvider>
-        <SafeAreaView>
+      <SafeAreaView>
+        <AuthProvider>
           <Routing />
-        </SafeAreaView>
-      </AuthProvider> */}
-      <LoginScreen/>
+        </AuthProvider>
+      </SafeAreaView>
     </TailwindProvider>
   );
 }
