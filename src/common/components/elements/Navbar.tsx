@@ -1,12 +1,12 @@
 import React from "react";
 import { Image } from "expo-image";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import { useTailwind } from "tailwind-rn";
 
 const bud = require("../../../../public/bud.svg") as string;
 const filters = require("../../../../public/filters.svg") as string;
 
-const Navbar = () => {
+const Navbar = ({ navigation }: any) => {
   const tailwind = useTailwind();
 
   return (
@@ -20,11 +20,13 @@ const Navbar = () => {
         style={tailwind("w-12 h-5")}
         contentFit="contain"
       ></Image>
-      <Image
-        source={filters}
-        style={tailwind("w-12 h-5")}
-        contentFit="contain"
-      ></Image>
+      <Pressable onPress={() => navigation.openDrawer()}>
+        <Image
+          source={filters}
+          style={tailwind("w-12 h-5")}
+          contentFit="contain"
+        ></Image>
+      </Pressable>
     </View>
   );
 };

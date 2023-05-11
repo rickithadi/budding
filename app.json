@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "starter-rn-expo-tailwind-ts",
-    "slug": "starter-rn-expo-tailwind-ts",
+    "name": "budding",
+    "slug": "budding",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./public/icon.png",
+    "icon": "./assets/images/logo.svg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./public/splash.png",
