@@ -17,7 +17,7 @@ const Drawer = createDrawerNavigator();
 
 const AuthedRoutes = () => (
   <NavigationContainer>
-    <Navbar />
+    {/* <Navbar /> */}
     <Drawer.Navigator drawerContent={(props) => <SidebarMenu {...props} />}>
       <Drawer.Screen name="Login" component={LoginScreen} />
     </Drawer.Navigator>
