@@ -6,7 +6,7 @@ import { useAuth } from "@/providers/AuthProvider";
 
 const logo = require("../assets/images/logo.svg") as string;
 
-const LoginScreen = () => {
+export const LoginScreen = () => {
   const tailwind = useTailwind();
   const { login } = useAuth();
   return (
