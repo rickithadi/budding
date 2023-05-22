@@ -1,30 +1,44 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Image } from "expo-image";
 
-// import { HomeScreen } from "./screens/HomeScreen";
-// import { ProfileScreen } from "./screens/ProfileScreen";
-// import { SearchScreen } from "./screens/SearchScreen";
+import { HomeScreen } from "./screens/HomeScreen";
+import { LoginScreen } from "./screens/LoginScreen";
+
 import { useAuth } from "./providers/AuthProvider";
-import LoginScreen from "./screens/LoginScreen";
-import Navbar from "./common/components/elements/Navbar";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import SidebarMenu from "./common/components/elements/SidebarMenu";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../types";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { LobbyScreen } from "./screens/LobbyScreen";
 
-const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const AuthedRoutes = () => (
-  <NavigationContainer>
-    <Navbar />
-    <Drawer.Navigator drawerContent={(props) => <SidebarMenu {...props} />}>
-      <Drawer.Screen name="Login" component={LoginScreen} />
-    </Drawer.Navigator>
-  </NavigationContainer>
+const AuthedCombinedRoutes = () => (
+  <SafeAreaProvider>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Lobby"
+          options={{
+            headerTransparent: false,
+            headerShadowVisible:false,
+            headerTitle: "Lobby Permainan",
+            headerShown: true,
+            headerTitleAlign: "center",
+          }}
+          component={LobbyScreen}
+          getId={({ params }: any) => params?.lobbyId}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  </SafeAreaProvider>
 );
+
 export const Routing = () => {
   const { currentUser } = useAuth();
-  return currentUser ? <AuthedRoutes /> : <LoginScreen />;
+  return currentUser ? <AuthedCombinedRoutes /> : <LoginScreen />;
 };
 export default Routing;
