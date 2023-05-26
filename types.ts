@@ -38,6 +38,6 @@ export enum Category {
 }
 export type RootStackParamList = {
   Lobby: { lobbyId: string };
-  Home: undefined;
+  Home: any;
 };
 export type StackNavProps = NativeStackScreenProps<RootStackParamList, "Lobby">;
