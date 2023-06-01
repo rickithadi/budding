@@ -16,6 +16,7 @@ import {
 
 const firebaseConfig = {
   apiKey: "AIzaSyCUjod7TryOgaMwimsFhhf3RDhQkCXmgqY",
+  // NOTE replace with vercel domain
   authDomain: "budding-app.firebaseapp.com",
   projectId: "budding-app",
   storageBucket: "budding-app.appspot.com",

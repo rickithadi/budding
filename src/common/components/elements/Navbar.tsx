@@ -12,7 +12,7 @@ const Navbar = ({ navigation }: any) => {
   return (
     <View
       style={tailwind(
-        "flex items-center justify-between flex-row bg-[#5A716A] p-6 h-12 p-2 "
+        "flex items-center justify-between flex-row bg-[#5A716A] p-6 h-12 p-2 w-[100vw]"
       )}
     >
       <Image

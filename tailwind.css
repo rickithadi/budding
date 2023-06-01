@@ -2,6 +2,10 @@
   position: static
 }
 
+.fixed {
+  position: fixed
+}
+
 .absolute {
   position: absolute
 }
@@ -14,20 +18,20 @@
   margin: auto
 }
 
+.block {
+  display: block
+}
+
+.inline {
+  display: inline
+}
+
 .flex {
   display: flex
 }
 
 .hidden {
   display: none
-}
-
-.h-screen {
-  height: 100vh
-}
-
-.h-full {
-  height: 100%
 }
 
 .h-12 {
@@ -38,12 +42,28 @@
   height: 1.25rem
 }
 
-.w-24 {
-  width: 6rem
+.h-full {
+  height: 100%
+}
+
+.h-screen {
+  height: 100vh
 }
 
 .w-12 {
   width: 3rem
+}
+
+.w-24 {
+  width: 6rem
+}
+
+.w-full {
+  width: 100%
+}
+
+.w-\[100vw\] {
+  width: 100vw
 }
 
 .flex-row {
@@ -62,6 +82,15 @@
   border-radius: 9999px
 }
 
+.border {
+  border-width: 1px
+}
+
+.bg-\[\#5A716A\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(90 113 106 / var(--tw-bg-opacity))
+}
+
 .bg-\[\#FAFAFA\] {
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 250 / var(--tw-bg-opacity))
@@ -72,21 +101,16 @@
   background-color: rgb(191 219 254 / var(--tw-bg-opacity))
 }
 
-.bg-\[\#5A716A\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(90 113 106 / var(--tw-bg-opacity))
-}
-
 .p-12 {
   padding: 3rem
 }
 
-.p-6 {
-  padding: 1.5rem
-}
-
 .p-2 {
   padding: 0.5rem
+}
+
+.p-6 {
+  padding: 1.5rem
 }
 
 .px-3 {
@@ -115,6 +139,18 @@
   font-weight: 600
 }
 
+.uppercase {
+  text-transform: uppercase
+}
+
+.capitalize {
+  text-transform: capitalize
+}
+
+.italic {
+  font-style: italic
+}
+
 .text-\[\#5A716A\] {
   --tw-text-opacity: 1;
   color: rgb(90 113 106 / var(--tw-text-opacity))
@@ -127,4 +163,8 @@
 
 .underline {
   text-decoration-line: underline
+}
+
+.\[a-zA-Z0-9\:_-\] {
+  a-z-a--z0-9: -
 }
