@@ -29,63 +29,56 @@ export const HomeScreen = () => {
         backgroundColor: "#FAFAFA",
       }}
     >
-      <View>
-        <Text>fuck</Text>
+      <Navbar />
+      <View style={tailwind("flex justify-between  w-[100vw] bg-[#FAFAFA]")}>
+        <Image
+          source={banner}
+          style={tailwind(" h-48  p-4")}
+          contentFit="contain"
+        ></Image>
+
+        <Card headerDesc="wait" headerText="wait" description="wait" />
+        <Card headerDesc="wait" headerText="wait" description="wait" />
+        <Card headerDesc="wait" headerText="wait" description="wait" />
+        <Card headerDesc="wait" headerText="wait" description="wait" />
       </View>
-      <View>
-        <Text>fuck</Text>
-      </View>
-      <View style={{ alignSelf: "flex-end" }}>
-        <Text>fuck</Text>
+      <View style={styles.bottomContainer}>
+        <Pressable>
+          <Text>nah</Text>
+        </Pressable>
+
+        <Pressable>
+          <Text>yeah</Text>
+        </Pressable>
       </View>
     </View>
-    // <View
-    //   style={{
-    //     ...styles.container,
-    //     paddingTop: insets.top,
-    //     paddingLeft: insets.left,
-    //     paddingBottom: insets.bottom,
-    //     paddingRight: insets.right,
-    //     backgroundColor: "#FAFAFA",
-    //   }}
-    // >
-    //   <Navbar />
-    //   <View>
-    //     <Image
-    //       source={banner}
-    //       style={tailwind(" h-48 p-4")}
-    //       contentFit="contain"
-    //     ></Image>
-
-    //     <View style={styles.apart}>
-    //       <View style={styles.card}>
-    //         <Text
-    //           style={tailwind("font-Khmer text-[16px] text-[#5A716A]  p-2 ")}
-    //         >
-    //           Event Details
-    //         </Text>
-    //         <Text style={tailwind("font-Khmer text-[24px] pl-2 ")}>
-    //           Alcohol X tech
-    //         </Text>
-    //         <Text style={tailwind("font-Khmer text-[16px] pl-2 ")}>
-    //           this is a short description of asjhdasjh
-    //         </Text>
-    //       </View>
-    //     </View>
-    //   </View>
-    //   <View style={styles.bottomContainer}>
-    //     <Pressable>
-    //       <Text>nah</Text>
-    //     </Pressable>
-
-    //     <Pressable>
-    //       <Text>yeah</Text>
-    //     </Pressable>
-    //   </View>
-    // </View>
   );
 };
 
+type CardProps = {
+  headerDesc: string;
+  headerText: string;
+  description: string;
+};
+
+const Card = ({ headerDesc, headerText, description }: CardProps) => {
+  const tailwind = useTailwind();
+  return (
+    <View style={{ ...styles.apart, ...tailwind("pb-4") }}>
+      <View style={styles.card}>
+        <Text style={tailwind("font-Khmer text-[16px] text-[#5A716A] pl-2 ")}>
+          Event Details
+        </Text>
+        <Text style={tailwind("font-Khmer text-[24px] pl-2 ")}>
+          Alcohol X tech
+        </Text>
+        <Text style={tailwind("font-Khmer text-[16px] pl-2 ")}>
+          this is a short description of asjhdasjh
+        </Text>
+      </View>
+    </View>
+  );
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -95,7 +88,7 @@ const styles = StyleSheet.create({
   },
   apart: {
     justifyContent: "center",
-
+    paddingTop: 14,
     flex: 4,
     alignItems: "center",
     alignContent: "space-around",
@@ -105,8 +98,9 @@ const styles = StyleSheet.create({
     height: "20vh",
     width: "90%",
     alignContent: "space-around",
-    padding: 10,
+    padding: 2,
     justifyContent: "center",
+    borderRadius: 10,
   },
   bottomContainer: {
     alignItems: "center",
