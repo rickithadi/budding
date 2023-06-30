@@ -67,6 +67,16 @@
 			"height": "100vh"
 		}
 	},
+	"h-24": {
+		"style": {
+			"height": 96
+		}
+	},
+	"h-48": {
+		"style": {
+			"height": 192
+		}
+	},
 	"w-12": {
 		"style": {
 			"width": 48
@@ -160,6 +170,14 @@
 			"paddingLeft": 24
 		}
 	},
+	"p-4": {
+		"style": {
+			"paddingTop": 16,
+			"paddingRight": 16,
+			"paddingBottom": 16,
+			"paddingLeft": 16
+		}
+	},
 	"px-3": {
 		"style": {
 			"paddingLeft": 12,
@@ -177,6 +195,11 @@
 			"paddingTop": 48
 		}
 	},
+	"pl-2": {
+		"style": {
+			"paddingLeft": 8
+		}
+	},
 	"font-Khmer": {
 		"style": {
 			"fontFamily": "Khmer MN"
@@ -185,6 +208,11 @@
 	"text-[16px]": {
 		"style": {
 			"fontSize": 16
+		}
+	},
+	"text-[24px]": {
+		"style": {
+			"fontSize": 24
 		}
 	},
 	"font-semibold": {

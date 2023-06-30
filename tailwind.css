@@ -38,6 +38,10 @@
   height: 3rem
 }
 
+.h-48 {
+  height: 12rem
+}
+
 .h-5 {
   height: 1.25rem
 }
@@ -56,10 +60,6 @@
 
 .w-24 {
   width: 6rem
-}
-
-.w-full {
-  width: 100%
 }
 
 .w-\[100vw\] {
@@ -109,6 +109,10 @@
   padding: 0.5rem
 }
 
+.p-4 {
+  padding: 1rem
+}
+
 .p-6 {
   padding: 1.5rem
 }
@@ -123,6 +127,10 @@
   padding-bottom: 0.25rem
 }
 
+.pl-2 {
+  padding-left: 0.5rem
+}
+
 .pt-12 {
   padding-top: 3rem
 }
@@ -133,6 +141,10 @@
 
 .text-\[16px\] {
   font-size: 16px
+}
+
+.text-\[24px\] {
+  font-size: 24px
 }
 
 .font-semibold {
