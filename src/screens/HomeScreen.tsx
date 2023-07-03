@@ -11,14 +11,13 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTailwind } from "tailwind-rn";
+import { Card } from "@/common/components/Card";
 
 const banner = require("../assets/images/banner.png") as string;
-const clock = require("../assets/images/clock.svg") as string;
-const people = require("../assets/images/people.svg") as string;
 const yes = require("../assets/images/yes.svg") as string;
 const no = require("../assets/images/no.svg") as string;
 
-export const HomeScreen = () => {
+export const HomeScreen = ({navigation}:any) => {
   const insets = useSafeAreaInsets();
   const tailwind = useTailwind();
 
@@ -32,7 +31,7 @@ export const HomeScreen = () => {
         backgroundColor: "#fafafa"
       }}
     >
-      <Navbar />
+      <Navbar navigation={navigation}/>
 
       <Image
           source={banner}
@@ -66,60 +65,6 @@ export const HomeScreen = () => {
   );
 };
 
-type CardProps = {
-  headerDesc: string;
-  headerText: string;
-  description?: string;
-  paddingTop?: string;
-  showPenis?: boolean;
-
-};
-
-const Card = ({ headerDesc, headerText, description, paddingTop, showPenis }: CardProps) => {
-  const tailwind = useTailwind();
-  return (
-    <View style={{ ...styles.apart, paddingTop }}>
-      <View style={styles.card}>
-        <Text style={tailwind("font-NunitoSans text-[#5A716A] text-[12px] font-normal uppercase")}>
-          {headerDesc}
-        </Text>
-        <Text style={tailwind("font-PlayfairDisplay text-[#222222] text-[24px] font-normal")}>
-          {headerText}
-
-        </Text>
-        {description &&
-        <Text style={tailwind("font-NunitoSans text-[#222222] text-[14px] font-extralight")}>
-          {description}
-        </Text>}
-
-        {showPenis && <>
-        <View
-          style={styles.penisContainer}>
-          <Image
-            source={clock}
-            style={tailwind("h-4 w-4")}
-            contentFit="fill"
-          ></Image>
-          <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
-            23 Jun (Tue), 8.00pm at Tara’s Pub
-          </Text>
-        </View>
-        <View
-          style={styles.penisContainer}>
-          <Image
-            source={people}
-            style={tailwind("h-4 w-4")}
-            contentFit="fill"
-          ></Image>
-          <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
-            ~5 going
-          </Text>
-        </View>
-        </>}
-      </View>
-    </View>
-  );
-};
 const styles = StyleSheet.create({
   penisContainer: {
       flex: 1,

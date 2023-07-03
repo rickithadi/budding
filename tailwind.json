@@ -164,6 +164,11 @@
 			"justifyContent": "flex-start"
 		}
 	},
+	"justify-center": {
+		"style": {
+			"justifyContent": "center"
+		}
+	},
 	"justify-between": {
 		"style": {
 			"justifyContent": "space-between"

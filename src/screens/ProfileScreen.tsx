@@ -9,14 +9,14 @@ import { Card } from "@/common/components/Card";
 const logo = require("../assets/images/logo.svg") as string;
 const connection = require("../assets/images/connection.svg") as string;
 
-export const ProfileScreen = () => {
+export const ProfileScreen = ({navigation}:any) => {
   const tailwind = useTailwind();
   const { currentUser } = useAuth();
   console.log(currentUser)
   return (
     <View style={tailwind(" items-center bg-[#FAFAFA] h-screen")}>
 
-      <Navbar />
+      <Navbar navigation={navigation} />
 
       <View style={styles.userInfo}>
         <Image
@@ -34,15 +34,24 @@ export const ProfileScreen = () => {
         <Text style={tailwind("font-NunitoSans text-[#5A716A] text-[24px] font-bold capitalize pb-2")}>
           {currentUser.displayName}
         </Text>
-      </View>
 
-      <Text style={tailwind("font-NunitoSans text-[#5A716A] text-[14px] font-light")}>
+        <Text style={tailwind("font-NunitoSans text-[#5A716A] text-[14px] font-light")}>
           14km away from you
         </Text>
-
-        <Card headerDesc="Question One" headerText="This is my answer to question 1. Yes, it’s a longer answer." paddingTop="8px" />
       </View>
 
+      <View>
+        <Card headerDesc="Bio" headerText="This is my bio. How long can it be? No idea." paddingTop="24px" />
+      </View>
+    {/* <View style={tailwind("flex justify-center")}> */}
+    <View style={{...styles.userInfo,width:'100vw'}}>
+      {/* <View style={styles.miniCards}> */}
+      <View style={tailwind("flex flex-row justify-start ")}>
+        <Card headerDesc="Events attended" headerText="2" />
+        <Card headerDesc="Events hosted" headerText="12" />
+        <Card headerDesc="Mutual interests" headerText="9" />
+      {/* </View> */}
+    </View></View></View>
   );
 };
 
@@ -51,6 +60,15 @@ export const ProfileScreen = () => {
 const styles = StyleSheet.create({
   userInfo: {
     paddingTop: 32,
+    alignItems: 'center',
+  },
+
+  miniCards: {
+    flex:1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    gap:4,
+    width:"30vw",
     alignItems: 'center',
   },
 

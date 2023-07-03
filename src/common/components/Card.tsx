@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text,  StyleSheet, ImageSourcePropType } from "react-native";
 import { useTailwind } from "tailwind-rn";
+import { Image } from "expo-image";
 
 
 
@@ -14,6 +15,10 @@ type CardProps = {
 };
 
 export const Card = ({ headerDesc, headerText, description, paddingTop, showPenis }: CardProps) => {
+
+const clock = require("../../assets/images/clock.svg") as string;
+const people = require("../../assets/images/people.svg") as string;
+
   const tailwind = useTailwind();
   return (
     <View style={{ ...styles.apart, paddingTop }}>
