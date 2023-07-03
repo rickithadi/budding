@@ -13,6 +13,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTailwind } from "tailwind-rn";
 
 const banner = require("../assets/images/banner.png") as string;
+const clock = require("../assets/images/clock.svg") as string;
+const people = require("../assets/images/people.svg") as string;
+const yes = require("../assets/images/yes.svg") as string;
+const no = require("../assets/images/no.svg") as string;
 
 export const HomeScreen = () => {
   const insets = useSafeAreaInsets();
@@ -21,34 +25,41 @@ export const HomeScreen = () => {
   return (
     <View
       style={{
-        ...styles.container,
         paddingTop: insets.top,
         paddingLeft: insets.left,
         paddingBottom: insets.bottom,
         paddingRight: insets.right,
-        backgroundColor: "#FAFAFA",
+        backgroundColor: "#fafafa"
       }}
     >
       <Navbar />
-      <View style={tailwind("flex justify-between  w-[100vw] bg-[#FAFAFA]")}>
-        <Image
+
+      <Image
           source={banner}
-          style={tailwind(" h-48  p-4")}
-          contentFit="contain"
+          style={tailwind("h-48 mx-4 my-6 rounded-2xl")}
+          contentFit="fill"
         ></Image>
 
-        <Card headerDesc="wait" headerText="wait" description="wait" />
-        <Card headerDesc="wait" headerText="wait" description="wait" />
-        <Card headerDesc="wait" headerText="wait" description="wait" />
-        <Card headerDesc="wait" headerText="wait" description="wait" />
+      <View style={tailwind("w-[100vw]")}>
+
+        <Card headerDesc="Event details" headerText="Alcohol X Tech 🍻" description="This is a short description of the event. This goes up to 2 lines. You can omit this description." showPenis/>
+        <Card headerDesc="Question One" headerText="This is my answer to question 1. Yes, it’s a longer answer." paddingTop="8px" />
+        <Card headerDesc="Question Two" headerText="This is my answer to question 2." paddingTop="8px" />
+        <Card headerDesc="Question Three" headerText="This is my answer to qn 3. Here is a longer answer. It can go up to 3 lines." paddingTop="8px" />
       </View>
       <View style={styles.bottomContainer}>
         <Pressable>
-          <Text>nah</Text>
+          <Image
+            source={yes}
+            style={tailwind("h-20 w-20")}
+          ></Image>
         </Pressable>
 
         <Pressable>
-          <Text>yeah</Text>
+        <Image
+            source={no}
+            style={tailwind("h-20 w-20")}
+          ></Image>
         </Pressable>
       </View>
     </View>
@@ -58,57 +69,86 @@ export const HomeScreen = () => {
 type CardProps = {
   headerDesc: string;
   headerText: string;
-  description: string;
+  description?: string;
+  paddingTop?: string;
+  showPenis?: boolean;
+
 };
 
-const Card = ({ headerDesc, headerText, description }: CardProps) => {
+const Card = ({ headerDesc, headerText, description, paddingTop, showPenis }: CardProps) => {
   const tailwind = useTailwind();
   return (
-    <View style={{ ...styles.apart, ...tailwind("pb-4") }}>
+    <View style={{ ...styles.apart, paddingTop }}>
       <View style={styles.card}>
-        <Text style={tailwind("font-Khmer text-[16px] text-[#5A716A] pl-2 ")}>
-          Event Details
+        <Text style={tailwind("font-NunitoSans text-[#5A716A] text-[12px] font-normal uppercase")}>
+          {headerDesc}
         </Text>
-        <Text style={tailwind("font-Khmer text-[24px] pl-2 ")}>
-          Alcohol X tech
+        <Text style={tailwind("font-PlayfairDisplay text-[#222222] text-[24px] font-normal")}>
+          {headerText}
+
         </Text>
-        <Text style={tailwind("font-Khmer text-[16px] pl-2 ")}>
-          this is a short description of asjhdasjh
-        </Text>
+        {description &&
+        <Text style={tailwind("font-NunitoSans text-[#222222] text-[14px] font-extralight")}>
+          {description}
+        </Text>}
+
+        {showPenis && <>
+        <View
+          style={styles.penisContainer}>
+          <Image
+            source={clock}
+            style={tailwind("h-4 w-4")}
+            contentFit="fill"
+          ></Image>
+          <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
+            23 Jun (Tue), 8.00pm at Tara’s Pub
+          </Text>
+        </View>
+        <View
+          style={styles.penisContainer}>
+          <Image
+            source={people}
+            style={tailwind("h-4 w-4")}
+            contentFit="fill"
+          ></Image>
+          <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
+            ~5 going
+          </Text>
+        </View>
+        </>}
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-between",
-    alignContent: "space-between",
-    alignItems: "center",
+  penisContainer: {
+      flex: 1,
+      flexDirection: "row",
+    gap: 4,
   },
+
   apart: {
-    justifyContent: "center",
-    paddingTop: 14,
-    flex: 4,
-    alignItems: "center",
-    alignContent: "space-around",
+    marginLeft: 16,
+    marginRight: 16,
   },
+
   card: {
-    backgroundColor: "#FFFFFF",
-    height: "20vh",
-    width: "90%",
-    alignContent: "space-around",
-    padding: 2,
-    justifyContent: "center",
-    borderRadius: 10,
+    backgroundColor: "#fff",
+    width: "100%",
+    padding: 16,
+    gap: 8,
+    borderRadius: 16,
+
   },
   bottomContainer: {
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "red",
-    height: "20vh",
+    gap: 48,
+    height:"fit-content",
     flex: 1,
     width: "100%",
     justifyContent: "center",
+    paddingTop: 24,
+    paddingBottom: 24,
   },
 });

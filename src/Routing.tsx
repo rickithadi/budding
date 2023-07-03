@@ -20,7 +20,7 @@ const AuthedCombinedRoutes = () => (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ headerShown: true }}
+        screenOptions={{ headerShown: false }}
       >
         <Stack.Screen
           name="Home"
