@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text,  StyleSheet, ImageSourcePropType } from "react-native";
+import { View, Text, StyleSheet, ImageSourcePropType } from "react-native";
 import { useTailwind } from "tailwind-rn";
 import { Image } from "expo-image";
 
@@ -11,17 +11,29 @@ type CardProps = {
   description?: string;
   paddingTop?: string;
   showPenis?: boolean;
+  vertical?: boolean;
+
 
 };
 
-export const Card = ({ headerDesc, headerText, description, paddingTop, showPenis }: CardProps) => {
+export const Card = ({ headerDesc, headerText, description, paddingTop, showPenis, vertical }: CardProps) => {
 
-const clock = require("../../assets/images/clock.svg") as string;
-const people = require("../../assets/images/people.svg") as string;
+  const clock = require("../../assets/images/clock.svg") as string;
+  const people = require("../../assets/images/people.svg") as string;
 
   const tailwind = useTailwind();
   return (
-    <View style={{ ...styles.apart, paddingTop }}>
+    <View
+      style={[vertical ?
+        styles.vertical :
+        styles.horizontal,
+      { paddingTop: paddingTop ? paddingTop : "0px" }
+
+      ]}
+    // style={{ ...styles.apart, paddingTop,flex} }
+    >
+
+
       <View style={styles.card}>
         <Text style={tailwind("font-NunitoSans text-[#5A716A] text-[12px] font-normal uppercase")}>
           {headerDesc}
@@ -31,49 +43,60 @@ const people = require("../../assets/images/people.svg") as string;
 
         </Text>
         {description &&
-        <Text style={tailwind("font-NunitoSans text-[#222222] text-[14px] font-extralight")}>
-          {description}
-        </Text>}
+          <Text style={tailwind("font-NunitoSans text-[#222222] text-[14px] font-extralight")}>
+            {description}
+          </Text>}
 
         {showPenis && <>
-        <View
-          style={styles.penisContainer}>
-          <Image
-            source={clock}
-            style={tailwind("h-4 w-4")}
-            contentFit="fill"
-          ></Image>
-          <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
-            23 Jun (Tue), 8.00pm at Tara’s Pub
-          </Text>
-        </View>
-        <View
-          style={styles.penisContainer}>
-          <Image
-            source={people}
-            style={tailwind("h-4 w-4")}
-            contentFit="fill"
-          ></Image>
-          <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
-            ~5 going
-          </Text>
-        </View>
+          <View
+            style={styles.penisContainer}>
+            <Image
+              source={clock}
+              style={tailwind("h-4 w-4")}
+              contentFit="fill"
+            ></Image>
+            <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
+              23 Jun (Tue), 8.00pm at Tara’s Pub
+            </Text>
+          </View>
+          <View
+            style={styles.penisContainer}>
+            <Image
+              source={people}
+              style={tailwind("h-4 w-4")}
+              contentFit="fill"
+            ></Image>
+            <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
+              ~5 going
+            </Text>
+          </View>
         </>}
       </View>
-    </View>
+    </View >
   );
 };
 
 const styles = StyleSheet.create({
   penisContainer: {
-      flex: 1,
-      flexDirection: "row",
+    // flex: 1,
+    flexDirection: "row",
     gap: 4,
   },
 
   apart: {
     marginLeft: 16,
     marginRight: 16,
+  },
+
+  vertical: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+
+  horizontal: {
+    flex: 1,
+    marginLeft: 0,
+    marginRight: 0,
   },
 
   card: {
@@ -88,7 +111,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     gap: 48,
-    height:"fit-content",
+    height: "fit-content",
     flex: 1,
     width: "100%",
     justifyContent: "center",

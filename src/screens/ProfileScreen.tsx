@@ -9,7 +9,7 @@ import { Card } from "@/common/components/Card";
 const logo = require("../assets/images/logo.svg") as string;
 const connection = require("../assets/images/connection.svg") as string;
 
-export const ProfileScreen = ({navigation}:any) => {
+export const ProfileScreen = ({ navigation }: any) => {
   const tailwind = useTailwind();
   const { currentUser } = useAuth();
   console.log(currentUser)
@@ -40,18 +40,17 @@ export const ProfileScreen = ({navigation}:any) => {
         </Text>
       </View>
 
+<View style={tailwind("mx-4")}>
       <View>
         <Card headerDesc="Bio" headerText="This is my bio. How long can it be? No idea." paddingTop="24px" />
       </View>
-    {/* <View style={tailwind("flex justify-center")}> */}
-    <View style={{...styles.userInfo,width:'100vw'}}>
-      {/* <View style={styles.miniCards}> */}
-      <View style={tailwind("flex flex-row justify-start ")}>
-        <Card headerDesc="Events attended" headerText="2" />
-        <Card headerDesc="Events hosted" headerText="12" />
-        <Card headerDesc="Mutual interests" headerText="9" />
-      {/* </View> */}
-    </View></View></View>
+
+      <View style={styles.miniCards}>
+        <Card headerDesc="Events attended" headerText="2"  />
+        <Card headerDesc="Events hosted" headerText="12"  />
+        <Card headerDesc="Mutual interests" headerText="9"  />
+      </View></View>
+      </View>
   );
 };
 
@@ -64,12 +63,11 @@ const styles = StyleSheet.create({
   },
 
   miniCards: {
-    flex:1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    gap:4,
-    width:"30vw",
     alignItems: 'center',
+    paddingTop: 16,
+    gap:16
   },
 
 });

@@ -54,6 +54,16 @@
 			"marginBottom": 16
 		}
 	},
+	"ml-0": {
+		"style": {
+			"marginLeft": 0
+		}
+	},
+	"mr-0": {
+		"style": {
+			"marginRight": 0
+		}
+	},
 	"block": {
 		"style": {
 			"display": "block"

@@ -41,10 +41,10 @@ export const HomeScreen = ({navigation}:any) => {
 
       <View style={tailwind("w-[100vw]")}>
 
-        <Card headerDesc="Event details" headerText="Alcohol X Tech 🍻" description="This is a short description of the event. This goes up to 2 lines. You can omit this description." showPenis/>
-        <Card headerDesc="Question One" headerText="This is my answer to question 1. Yes, it’s a longer answer." paddingTop="8px" />
-        <Card headerDesc="Question Two" headerText="This is my answer to question 2." paddingTop="8px" />
-        <Card headerDesc="Question Three" headerText="This is my answer to qn 3. Here is a longer answer. It can go up to 3 lines." paddingTop="8px" />
+        <Card headerDesc="Event details" headerText="Alcohol X Tech 🍻" description="This is a short description of the event. This goes up to 2 lines. You can omit this description." showPenis vertical/>
+        <Card headerDesc="Question One" headerText="This is my answer to question 1. Yes, it’s a longer answer." paddingTop="8px" vertical />
+        <Card headerDesc="Question Two" headerText="This is my answer to question 2." paddingTop="8px" vertical />
+        <Card headerDesc="Question Three" headerText="This is my answer to qn 3. Here is a longer answer. It can go up to 3 lines." paddingTop="8px" vertical/>
       </View>
       <View style={styles.bottomContainer}>
         <Pressable>
