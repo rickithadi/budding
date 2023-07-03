@@ -44,6 +44,16 @@
 			"marginTop": 24
 		}
 	},
+	"mb-2": {
+		"style": {
+			"marginBottom": 8
+		}
+	},
+	"mb-4": {
+		"style": {
+			"marginBottom": 16
+		}
+	},
 	"block": {
 		"style": {
 			"display": "block"
@@ -99,6 +109,16 @@
 			"height": 80
 		}
 	},
+	"h-24": {
+		"style": {
+			"height": 96
+		}
+	},
+	"h-6": {
+		"style": {
+			"height": 24
+		}
+	},
 	"w-12": {
 		"style": {
 			"width": 48
@@ -122,6 +142,11 @@
 	"w-20": {
 		"style": {
 			"width": 80
+		}
+	},
+	"w-6": {
+		"style": {
+			"width": 24
 		}
 	},
 	"flex-row": {
@@ -245,6 +270,11 @@
 			"paddingBottom": 8
 		}
 	},
+	"pb-4": {
+		"style": {
+			"paddingBottom": 16
+		}
+	},
 	"font-Khmer": {
 		"style": {
 			"fontFamily": "Khmer MN"
@@ -283,6 +313,16 @@
 	"font-extralight": {
 		"style": {
 			"fontWeight": "200"
+		}
+	},
+	"font-bold": {
+		"style": {
+			"fontWeight": "700"
+		}
+	},
+	"font-light": {
+		"style": {
+			"fontWeight": "300"
 		}
 	},
 	"uppercase": {
