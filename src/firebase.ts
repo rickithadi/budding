@@ -13,15 +13,18 @@ import {
 } from "firebase/firestore";
 
 // Initialize Firebase
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCK1qHvj7xTN2r_3YhjWdkSRD8Be2TjpbE",
-  authDomain: "playard-indo.firebaseapp.com",
-  projectId: "playard-indo",
-  storageBucket: "playard-indo.appspot.com",
-  messagingSenderId: "174201647108",
-  appId: "1:174201647108:web:156a8dd86a0aa904890551",
-  measurementId: "G-3N2WX03X2P",
+  apiKey: "AIzaSyCUjod7TryOgaMwimsFhhf3RDhQkCXmgqY",
+  // NOTE replace with vercel domain
+  authDomain: "budding-app.firebaseapp.com",
+  projectId: "budding-app",
+  storageBucket: "budding-app.appspot.com",
+  messagingSenderId: "851094054670",
+  appId: "1:851094054670:web:b977b03def3cbb37ef195f",
+  measurementId: "G-HC896VDHGM"
 };
+
 
 export const app = initializeApp(firebaseConfig);
 // For more information on how to access Firebase in your project,

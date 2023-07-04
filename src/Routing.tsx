@@ -9,8 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { LobbyScreen } from "./screens/LobbyScreen";
-import { StatusBar } from "react-native";
-import { SwipeScreen } from "./screens/SwipeScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -18,10 +17,17 @@ const AuthedCombinedRoutes = () => (
   <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ headerShown: true }}
+        initialRouteName="Profile"
+        screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Home" component={SwipeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+        />
         <Stack.Screen
           name="Lobby"
           component={LobbyScreen}

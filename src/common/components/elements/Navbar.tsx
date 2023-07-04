@@ -6,21 +6,27 @@ import { useTailwind } from "tailwind-rn";
 const bud = require("../../../../public/bud.svg") as string;
 const filters = require("../../../../public/filters.svg") as string;
 
-const Navbar = ({ navigation }: any) => {
+const  Navbar = ({ navigation }: any) => {
   const tailwind = useTailwind();
+
 
   return (
     <View
       style={tailwind(
-        "flex items-center justify-between flex-row bg-[#5A716A] p-6 h-12 p-2 "
+        "flex items-center justify-between flex-row bg-[#5A716A] p-6 h-12 p-2 w-[100vw]"
       )}
     >
-      <Image
-        source={bud}
-        style={tailwind("w-12 h-5")}
-        contentFit="contain"
-      ></Image>
-      <Pressable onPress={() => navigation.toggleDrawer()}>
+      <Pressable onPress={() => navigation.navigate('Home')}>
+
+
+        <Image
+          source={bud}
+          style={tailwind("w-12 h-5")}
+          contentFit="contain"
+        ></Image>
+        </Pressable>
+
+      <Pressable onPress={() => console.log('wait')}>
         <Image
           source={filters}
           style={tailwind("w-12 h-5")}

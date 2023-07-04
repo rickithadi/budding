@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }: any) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      console.log(user);
       if (!user) return setCurrentUser(null);
       await createOrUpdateFirebaseUser(user);
       await setCurrentUser(user);
