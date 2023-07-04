@@ -4,7 +4,7 @@ import { Pressable, Text, View } from "react-native";
 import { useTailwind } from "tailwind-rn";
 import { useAuth } from "@/providers/AuthProvider";
 
-const logo = require("../assets/images/logo.svg") as string;
+const logo = require("../assets/images/logo.png") as string;
 
 export const LoginScreen = () => {
   const tailwind = useTailwind();

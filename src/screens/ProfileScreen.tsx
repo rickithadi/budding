@@ -6,7 +6,6 @@ import { useAuth } from "@/providers/AuthProvider";
 import Navbar from "@/common/components/elements/Navbar";
 import { Card } from "@/common/components/Card";
 
-const logo = require("../assets/images/logo.svg") as string;
 const connection = require("../assets/images/connection.svg") as string;
 
 export const ProfileScreen = ({ navigation }: any) => {
