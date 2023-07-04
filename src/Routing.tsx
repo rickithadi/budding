@@ -17,7 +17,7 @@ const AuthedCombinedRoutes = () => (
   <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Lobby"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen
