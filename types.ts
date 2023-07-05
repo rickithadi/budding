@@ -9,6 +9,7 @@ export type Lobby = {
   id: string;
   photoUrl: string;
   title: string;
+
   eventDate: Timestamp;
   description: string;
   eventLocation: string;
@@ -19,9 +20,9 @@ export type Lobby = {
   answerTwo: string;
   answerThree: string;
   attendinguserId: any;
-  
+
 };
-export type Player = {
+export type User = {
   userId: string;
   paid: boolean;
 };

@@ -14,7 +14,7 @@ import { useLobby } from "./providers/LobbyProvider";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const AuthedCombinedRoutes = () => (
+const AuthedCombinedRoutes = ({ lobbyList }: any) => (
   <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
@@ -32,9 +32,8 @@ const AuthedCombinedRoutes = () => (
         <Stack.Screen
           name="Lobby"
           component={LobbyScreen}
-          initialParams={{ lobbyId: "56tRFu538Htd85gX6Xo3" }}
+          initialParams={{ lobbyId: lobbyList[Math.floor(Math.random() * lobbyList.length)].id }}
           getId={({ params }) => params?.lobbyId}
-          // getLobbyList={({ lobbyList }) => params?.lobbyId}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -42,7 +41,10 @@ const AuthedCombinedRoutes = () => (
 );
 
 export const Routing = () => {
+
+  const { lobbyList } = useLobby()
   const { currentUser } = useAuth();
-  return currentUser ? <AuthedCombinedRoutes /> : <LoginScreen />;
+  return currentUser ? <AuthedCombinedRoutes lobbyList={lobbyList} /> : <LoginScreen />;
+
 };
 export default Routing;
