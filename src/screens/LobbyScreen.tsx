@@ -1,21 +1,19 @@
 import Navbar from "@/common/components/elements/Navbar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Image } from "expo-image";
 import {
-  Text,
-  Button,
-  StatusBar,
   View,
   StyleSheet,
   Pressable,
+  ScrollView,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTailwind } from "tailwind-rn";
 import { Card } from "@/common/components/Card";
 import { useLobby } from "@/providers/LobbyProvider";
 import { Lobby } from "types";
+import { DateTime } from "luxon";
 
-const banner = require("../assets/images/banner.png") as string;
 const yes = require("../assets/images/yes.svg") as string;
 const no = require("../assets/images/no.svg") as string;
 
@@ -24,8 +22,8 @@ export const LobbyScreen = ({ route, navigation }: any) => {
   const tailwind = useTailwind();
   const { lobbyId } = route.params;
   const [localLobby, setLocalLobby] = useState<Lobby | null>(null);
-  const { getLobby, lobbyList } = useLobby()
-  console.log(route)
+  const { getLobby, lobbyList } = useLobby();
+  const scrollRef = useRef();
 
   useEffect(() => {
     console.log('new lobby set', route.params.lobbyId)
@@ -38,57 +36,84 @@ export const LobbyScreen = ({ route, navigation }: any) => {
       const nextLobby = lobbyList[Math.floor(Math.random() * lobbyList.length)]
       navigation.setParams({ lobbyId: nextLobby.id })
     }
-    // navigation.setParams({ lobbyId: 'tr26acdmnibnAG8a3bnR' })
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+// @ts-ignore
+    scrollRef.current?.scrollTo({
+      y: 0,
+      animated: true,
     });
 
   }
   return (
-    <View
-      style={{
-        paddingTop: insets.top,
-        paddingLeft: insets.left,
-        paddingBottom: insets.bottom,
-        paddingRight: insets.right,
-        backgroundColor: "#fafafa"
-      }}
-    >
-      <Navbar navigation={navigation} />
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer} ref={scrollRef as any}>  
+        <Navbar navigation={navigation} />
+        <Image
+          source={localLobby?.photoUrl}
+          style={tailwind("h-48 mx-4 my-6 rounded-2xl")}
+          contentFit="cover"
+        ></Image>
+
+        {localLobby &&
+          <View style={tailwind("w-[100vw]")}>
+            <Card headerDesc="Event details" headerText={localLobby?.title || ''} description={localLobby?.description || ''} eventDateLoc={`${DateTime.fromISO(
+              new Date(localLobby.eventDate.toDate()).toISOString()
+            ).toFormat("dd LLL (EEE), t")} at ${localLobby.eventLocation}`} showPenis vertical />
+            <Card headerDesc={localLobby?.questionOne || ''} headerText={localLobby?.answerOne || ''} paddingTop="8px" vertical />
+            <Card headerDesc={localLobby?.questionTwo || ''} headerText={localLobby?.answerTwo || ''} paddingTop="8px" vertical />
+            <Card headerDesc={localLobby?.questionThree || ''} headerText={localLobby?.answerThree || ''} paddingTop="8px" vertical />
+          </View>}
+      </ScrollView>
+
+<View style={styles.floatingButton}>
+      <Pressable onPress={() => nextLobby()}>
+        <Image
+          source={no}
+          style={tailwind("h-20 w-20")}
+        ></Image>
+      </Pressable>
+
+      <Pressable onPress={() => nextLobby()}>
       <Image
-        source={localLobby?.photoUrl}
-        style={tailwind("h-48 mx-4 my-6 rounded-2xl")}
-        contentFit="cover"
+        source={yes}
+        style={tailwind("h-20 w-20")}
       ></Image>
-      <View style={tailwind("w-[100vw]")}>
-
-        <Card headerDesc="Event details" headerText={localLobby?.title || ''} description="This is a short description of the event. This goes up to 2 lines. You can omit this description." showPenis vertical />
-        <Card headerDesc="Question One" headerText="This is my answer to question 1. Yes, it’s a longer answer." paddingTop="8px" vertical />
-        <Card headerDesc="Question Two" headerText="This is my answer to question 2." paddingTop="8px" vertical />
-        <Card headerDesc="Question Three" headerText="This is my answer to qn 3. Here is a longer answer. It can go up to 3 lines." paddingTop="8px" vertical />
-      </View>
-      <View style={styles.bottomContainer}>
-        <Pressable>
-          <Image
-            source={yes}
-            style={tailwind("h-20 w-20")}
-          ></Image>
-        </Pressable>
-
-        <Pressable onPress={() => nextLobby()}>
-          <Image
-            source={no}
-            style={tailwind("h-20 w-20")}
-          ></Image>
-        </Pressable>
-      </View>
+    </Pressable>
+    </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    minHeight: "100vh",
+    height: "100vh",
+    minWidth: "100vw",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    backgroundColor: "#fafafa",
+    paddingBottom: 60, // Adjust this value to provide space for the floating button
+  },
+
+  floatingButton: {
+    position: 'absolute',
+    bottom: 20, // Adjust this value to set the vertical position of the button
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: "row",
+    gap: 48,
+    elevation: 5, // Add elevation for shadow on Android
+  },
+
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+
   penisContainer: {
     flex: 1,
     flexDirection: "row",
@@ -107,16 +132,5 @@ const styles = StyleSheet.create({
     gap: 8,
     borderRadius: 16,
 
-  },
-  bottomContainer: {
-    alignItems: "center",
-    flexDirection: "row",
-    gap: 48,
-    height: "fit-content",
-    flex: 1,
-    width: "100%",
-    justifyContent: "center",
-    paddingTop: 24,
-    paddingBottom: 24,
   },
 });

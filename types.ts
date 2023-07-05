@@ -9,9 +9,17 @@ export type Lobby = {
   id: string;
   photoUrl: string;
   title: string;
-  players: Player[];
-  venue: Venue;
-  details: Details;
+  eventDate: Timestamp;
+  description: string;
+  eventLocation: string;
+  questionOne: string;
+  questionTwo: string;
+  questionThree: string;
+  answerOne: string;
+  answerTwo: string;
+  answerThree: string;
+  attendinguserId: any;
+  
 };
 export type Player = {
   userId: string;
