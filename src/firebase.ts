@@ -22,10 +22,8 @@ const firebaseConfig = {
   storageBucket: "budding-app.appspot.com",
   messagingSenderId: "851094054670",
   appId: "1:851094054670:web:b977b03def3cbb37ef195f",
-  measurementId: "G-HC896VDHGM"
-
+  measurementId: "G-HC896VDHGM",
 };
-
 
 export const app = initializeApp(firebaseConfig);
 // For more information on how to access Firebase in your project,
@@ -74,13 +72,15 @@ export const createOrUpdateFirebaseUser = async (authUser: User) => {
   }
 };
 export const getLobbyById = async (id: string) => {
+  console.log("getting lob by id", id);
   const lobbyRef = doc(db, "lobbies", id);
   const lobbyDoc = await getDoc(lobbyRef);
+  console.log(lobbyDoc.data());
 
   return lobbyDoc.data();
 };
 export const getAllLobbies = async () => {
-  console.log('getting lobs')
+  console.log("getting lobs");
   let lobbies: any = [];
   const lobbiesRef = await getDocs(collection(db, "lobbies"));
   lobbiesRef.forEach((doc) => {

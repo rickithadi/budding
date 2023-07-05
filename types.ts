@@ -7,6 +7,8 @@ export type FirestoreLobby = {
 };
 export type Lobby = {
   id: string;
+  photoUrl: string;
+  title: string;
   players: Player[];
   venue: Venue;
   details: Details;
