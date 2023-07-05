@@ -1,4 +1,4 @@
-import { signInWithRedirect, User } from "firebase/auth";
+import { signInWithPopup, signInWithRedirect, User } from "firebase/auth";
 import { Text } from "react-native";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, createOrUpdateFirebaseUser, provider } from "../firebase";
@@ -16,16 +16,16 @@ export const AuthProvider = ({ children }: any) => {
   const getUser = () => auth.currentUser;
 
   const login = async () => {
-    await signInWithRedirect(auth, provider);
+    await signInWithPopup(auth, provider);
   };
   const logout = async () => auth.signOut();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      console.log(user);
+      console.log('wtf',user);
       if (!user) return setCurrentUser(null);
       await createOrUpdateFirebaseUser(user);
-      await setCurrentUser(user);
+       setCurrentUser(user);
       setLoading(false);
     });
 

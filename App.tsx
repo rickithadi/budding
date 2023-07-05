@@ -8,6 +8,7 @@ import { useFonts } from "expo-font";
 import { AuthProvider } from "@/providers/AuthProvider";
 import Routing from "@/Routing";
 import LoginScreen from "@/screens/LoginScreen";
+import { LobbyProvider } from "@/providers/LobbyProvider";
 
 export default function App() {
   // const [fontsLoaded] = useFonts({
@@ -18,7 +19,9 @@ export default function App() {
     <TailwindProvider utilities={utilities}>
       <SafeAreaView>
         <AuthProvider>
-          <Routing />
+          <LobbyProvider>
+            <Routing />
+          </LobbyProvider>
         </AuthProvider>
       </SafeAreaView>
     </TailwindProvider>

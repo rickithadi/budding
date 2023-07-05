@@ -5,7 +5,7 @@ import {
   getLobbyById,
   getAllLobbies,
 } from "../firebase";
-import { Lobby } from "../types";
+import { Lobby } from "types";
 
 export const LobbyContext = createContext<any>(null);
 
@@ -20,12 +20,13 @@ export const LobbyProvider = ({ children }: any) => {
   const getLobby = (id: string) => getLobbyById(id);
 
   const getLobbies = () => getAllLobbies();
-
+  
   const joinLobby = (id: string) => auth.currentUser;
   const leaveLobby = (id: string) => auth.currentUser;
 
   useEffect(() => {
     const getLobbiesOnRender = async () => {
+      console.log('getting lobbies in provider')
       const lobbies = await getAllLobbies();
       await setLobbyList(lobbies);
       setLobbyLoading(false)

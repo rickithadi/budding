@@ -2,9 +2,6 @@ import Navbar from "@/common/components/elements/Navbar";
 import React from "react";
 import { Image } from "expo-image";
 import {
-  Text,
-  Button,
-  StatusBar,
   View,
   StyleSheet,
   Pressable,
@@ -12,15 +9,16 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTailwind } from "tailwind-rn";
 import { Card } from "@/common/components/Card";
+import { useLobby } from "@/providers/LobbyProvider";
 
 const banner = require("../assets/images/banner.png") as string;
 const yes = require("../assets/images/yes.svg") as string;
 const no = require("../assets/images/no.svg") as string;
 
-export const HomeScreen = ({navigation}:any) => {
+export const HomeScreen = ({ navigation }: any) => {
   const insets = useSafeAreaInsets();
   const tailwind = useTailwind();
-
+  const { lobbyList } = useLobby();
   return (
     <View
       style={{
@@ -31,20 +29,23 @@ export const HomeScreen = ({navigation}:any) => {
         backgroundColor: "#fafafa"
       }}
     >
-      <Navbar navigation={navigation}/>
-
+      <Navbar navigation={navigation} />
       <Image
-          source={banner}
-          style={tailwind("h-48 mx-4 my-6 rounded-2xl")}
-          contentFit="fill"
-        ></Image>
+        source={banner}
+        style={tailwind("h-48 mx-4 my-6 rounded-2xl")}
+        contentFit="fill"
+      ></Image>
 
       <View style={tailwind("w-[100vw]")}>
 
-        <Card headerDesc="Event details" headerText="Alcohol X Tech 🍻" description="This is a short description of the event. This goes up to 2 lines. You can omit this description." showPenis vertical/>
+        {lobbyList &&
+          lobbyList
+            .map((firestoreLobby: any, index: number) => <View>{firestoreLobby.title}</View>
+            )}
+        <Card headerDesc="Event details" headerText="Alcohol X Tech 🍻" description="This is a short description of the event. This goes up to 2 lines. You can omit this description." showPenis vertical />
         <Card headerDesc="Question One" headerText="This is my answer to question 1. Yes, it’s a longer answer." paddingTop="8px" vertical />
         <Card headerDesc="Question Two" headerText="This is my answer to question 2." paddingTop="8px" vertical />
-        <Card headerDesc="Question Three" headerText="This is my answer to qn 3. Here is a longer answer. It can go up to 3 lines." paddingTop="8px" vertical/>
+        <Card headerDesc="Question Three" headerText="This is my answer to qn 3. Here is a longer answer. It can go up to 3 lines." paddingTop="8px" vertical />
       </View>
       <View style={styles.bottomContainer}>
         <Pressable>
@@ -55,7 +56,7 @@ export const HomeScreen = ({navigation}:any) => {
         </Pressable>
 
         <Pressable>
-        <Image
+          <Image
             source={no}
             style={tailwind("h-20 w-20")}
           ></Image>
@@ -67,8 +68,8 @@ export const HomeScreen = ({navigation}:any) => {
 
 const styles = StyleSheet.create({
   penisContainer: {
-      flex: 1,
-      flexDirection: "row",
+    flex: 1,
+    flexDirection: "row",
     gap: 4,
   },
 
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     gap: 48,
-    height:"fit-content",
+    height: "fit-content",
     flex: 1,
     width: "100%",
     justifyContent: "center",

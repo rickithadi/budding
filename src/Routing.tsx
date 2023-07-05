@@ -10,6 +10,7 @@ import { RootStackParamList } from "../types";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { LobbyScreen } from "./screens/LobbyScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import { useLobby } from "./providers/LobbyProvider";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,7 +18,7 @@ const AuthedCombinedRoutes = () => (
   <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Lobby"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen
@@ -31,7 +32,9 @@ const AuthedCombinedRoutes = () => (
         <Stack.Screen
           name="Lobby"
           component={LobbyScreen}
-          getId={({ params }: any) => params?.lobbyId}
+          initialParams={{ lobbyId: "56tRFu538Htd85gX6Xo3" }}
+          getId={({ params }) => params?.lobbyId}
+          // getLobbyList={({ lobbyList }) => params?.lobbyId}
         />
       </Stack.Navigator>
     </NavigationContainer>
