@@ -79,6 +79,7 @@ export const getLobbyById = async (id: string) => {
   return lobbyDoc.data();
 };
 export const getAllLobbies = async () => {
+  console.log('getting lobs')
   let lobbies: any = [];
   const lobbiesRef = await getDocs(collection(db, "lobbies"));
   lobbiesRef.forEach((doc) => {

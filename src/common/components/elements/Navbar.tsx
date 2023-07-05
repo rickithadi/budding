@@ -16,7 +16,13 @@ const  Navbar = ({ navigation }: any) => {
         "flex items-center justify-between flex-row bg-[#5A716A] p-6 h-12 p-2 w-[100vw]"
       )}
     >
-      <Pressable onPress={() => navigation.navigate('Home')}>
+      <Pressable onPress={() => {
+          /* 1. Navigate to the Details route with params */
+          navigation.navigate('Lobby', {
+            lobbyId: 123,
+          });
+        }}
+        >
 
 
         <Image
