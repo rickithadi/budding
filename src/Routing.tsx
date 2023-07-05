@@ -17,7 +17,7 @@ const AuthedCombinedRoutes = () => (
   <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Lobby"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen
@@ -31,7 +31,8 @@ const AuthedCombinedRoutes = () => (
         <Stack.Screen
           name="Lobby"
           component={LobbyScreen}
-          getId={({ params }: any) => params?.lobbyId}
+          initialParams={{ lobbyId: "42" }}
+          getId={({ params }) => params?.lobbyId}
         />
       </Stack.Navigator>
     </NavigationContainer>
