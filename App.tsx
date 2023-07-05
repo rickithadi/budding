@@ -20,7 +20,8 @@ export default function App() {
       <SafeAreaView>
         <AuthProvider>
           <LobbyProvider>
-            <Routing /></LobbyProvider>
+            <Routing />
+          </LobbyProvider>
         </AuthProvider>
       </SafeAreaView>
     </TailwindProvider>

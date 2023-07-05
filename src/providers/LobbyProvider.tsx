@@ -26,6 +26,7 @@ export const LobbyProvider = ({ children }: any) => {
 
   useEffect(() => {
     const getLobbiesOnRender = async () => {
+      console.log('getting lobbies in provider')
       const lobbies = await getAllLobbies();
       await setLobbyList(lobbies);
       setLobbyLoading(false)
