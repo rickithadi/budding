@@ -5,6 +5,7 @@ import { Image } from "expo-image";
 
 
 
+
 type CardProps = {
   headerDesc: string;
   headerText: string;
@@ -12,11 +13,11 @@ type CardProps = {
   paddingTop?: string;
   showPenis?: boolean;
   vertical?: boolean;
-
+  eventDateLoc?: string;
 
 };
 
-export const Card = ({ headerDesc, headerText, description, paddingTop, showPenis, vertical }: CardProps) => {
+export const Card = ({ headerDesc, headerText, description, paddingTop, eventDateLoc, showPenis, vertical }: CardProps) => {
 
   const clock = require("../../assets/images/clock.svg") as string;
   const people = require("../../assets/images/people.svg") as string;
@@ -56,7 +57,7 @@ export const Card = ({ headerDesc, headerText, description, paddingTop, showPeni
               contentFit="fill"
             ></Image>
             <Text style={tailwind("font-NunitoSans text-[#222222] text-opacity-80 text-[14px] font-extralight h-4")}>
-              23 Jun (Tue), 8.00pm at Tara’s Pub
+            {eventDateLoc}
             </Text>
           </View>
           <View
