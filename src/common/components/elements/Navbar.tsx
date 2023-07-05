@@ -6,7 +6,7 @@ import { useTailwind } from "tailwind-rn";
 const bud = require("../../../../public/bud.svg") as string;
 const filters = require("../../../../public/filters.svg") as string;
 
-const  Navbar = ({ navigation }: any) => {
+const Navbar = ({ navigation }: any) => {
   const tailwind = useTailwind();
 
 
@@ -17,12 +17,10 @@ const  Navbar = ({ navigation }: any) => {
       )}
     >
       <Pressable onPress={() => {
-          /* 1. Navigate to the Details route with params */
-          navigation.navigate('Lobby', {
-            lobbyId: 123,
-          });
-        }}
-        >
+        /* 1. Navigate to the Details route with params */
+        navigation.navigate('Lobby')
+      }}
+      >
 
 
         <Image
@@ -30,9 +28,9 @@ const  Navbar = ({ navigation }: any) => {
           style={tailwind("w-12 h-5")}
           contentFit="contain"
         ></Image>
-        </Pressable>
+      </Pressable>
 
-      <Pressable onPress={() => console.log('wait')}>
+      <Pressable onPress={() => navigation.navigate("Profile")}>
         <Image
           source={filters}
           style={tailwind("w-12 h-5")}

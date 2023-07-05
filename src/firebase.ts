@@ -89,3 +89,109 @@ export const getAllLobbies = async () => {
   });
   return lobbies;
 };
+export const noToLobbyFirebase = async (
+  lobbyId: string,
+  userId: string
+): Promise<User[] | undefined> => {
+  const lobbyRef = doc(db, "lobbies", lobbyId);
+  const lobbyDoc = await getDoc(lobbyRef);
+
+  const userRef = doc(db, "users", userId);
+  const userDoc = await getDoc(userRef);
+  console.log("removing player", userDoc.data());
+  console.log("manipulating lobby", lobbyDoc.data());
+
+  if (!lobbyDoc.exists()) {
+    console.log("no such lobby");
+    return undefined;
+  }
+
+  const { players } = lobbyDoc.data() as Lobby;
+  // TODO types
+  const { joinedLobbies } = userDoc.data() as any;
+  if (!joinedLobbies) {
+    console.log(joinedLobbies);
+    console.log("user does not have joined lobbies");
+    return undefined;
+  }
+
+  const alreadyJoined = players.find((p: Player) => p.userId === userId);
+  const joinedLobbyIndex = joinedLobbies.find(
+    (userLobbyId: string) => userLobbyId === lobbyId
+  );
+
+  if (!alreadyJoined || !joinedLobbyIndex) {
+    console.log("not yet joined");
+    return undefined;
+  }
+  players.splice(players.indexOf(alreadyJoined), 1);
+  joinedLobbies.splice(joinedLobbies.indexOf(joinedLobbyIndex), 1);
+  try {
+    await updateDoc(lobbyRef, {
+      players,
+    });
+    await updateDoc(userRef, {
+      joinedLobbies,
+    });
+  } catch (e: any) {
+    console.log("error leaving lobby", e.message);
+  }
+
+  console.log("player removed succesfully", players);
+  return players;
+};
+export const yesToLobbyFirebase = async (
+  lobbyId: string,
+  userId: string
+): Promise<User[] | undefined> => {
+  const lobbyRef = doc(db, "lobbies", lobbyId);
+  const lobbyDoc = await getDoc(lobbyRef);
+
+  const userRef = doc(db, "users", userId);
+  const userDoc = await getDoc(userRef);
+  const { email, photoURL, displayName }: any = userDoc.data();
+  console.log("adding player", userDoc.data());
+  console.log("manipulating lobby", lobbyDoc.data());
+
+  if (!lobbyDoc.exists()) {
+    console.log("no such lobby");
+    return undefined;
+  }
+  const { players } = lobbyDoc.data() as Lobby;
+  const alreadyJoined = players.find((p: Player) => p.userId === userId);
+
+  if (alreadyJoined) {
+    console.log("already joined");
+    return undefined;
+  }
+
+  // TODO reenable paid to false before pushing
+  const playerInsertion: Player = {
+    paid: true,
+    userId,
+    email,
+    photoURL,
+    displayName,
+  };
+  players.push(playerInsertion);
+  const joinedLobbies = [...userDoc?.data()?.joinedLobbies, lobbyId];
+
+  console.log("new user joinedLobbies", joinedLobbies);
+  console.log("new lobby players", players);
+  try {
+    await updateDoc(lobbyRef, {
+      players,
+    });
+    await updateDoc(userRef, {
+      joinedLobbies,
+    });
+
+    //update user with joined lobby id
+  } catch (e: any) {
+    console.log("error joining lobby", e.message);
+  }
+  console.log("player added succesfully", players);
+  // update document
+
+  return players;
+};

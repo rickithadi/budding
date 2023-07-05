@@ -9,11 +9,11 @@ export type Lobby = {
   id: string;
   photoUrl: string;
   title: string;
-  players: Player[];
+  joinedUsers: User[];
   venue: Venue;
   details: Details;
 };
-export type Player = {
+export type User = {
   userId: string;
   paid: boolean;
 };
