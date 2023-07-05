@@ -4,6 +4,8 @@ import {
   auth,
   getLobbyById,
   getAllLobbies,
+  noToLobbyFirebase,
+  yesToLobbyFirebase,
 } from "../firebase";
 import { Lobby } from "types";
 
@@ -20,9 +22,16 @@ export const LobbyProvider = ({ children }: any) => {
   const getLobby = (id: string) => getLobbyById(id);
 
   const getLobbies = () => getAllLobbies();
-  
-  const joinLobby = (id: string) => auth.currentUser;
-  const leaveLobby = (id: string) => auth.currentUser;
+
+  const yesToLobby = (
+    lobbyId: string,
+    userId: string
+  ) => yesToLobbyFirebase(lobbyId, userId);
+
+  const noToLobby = (
+    lobbyId: string,
+    userId: string
+  ) => noToLobbyFirebase(lobbyId, userId);
 
   useEffect(() => {
     const getLobbiesOnRender = async () => {
@@ -36,8 +45,8 @@ export const LobbyProvider = ({ children }: any) => {
   const value = {
     getLobby,
     getLobbies,
-    joinLobby,
-    leaveLobby,
+    yesToLobby,
+    noToLobby,
     lobbyList,
     setLobbyList,
     lobbyLoading,
